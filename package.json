@@ -1,0 +1,9 @@
+{
+  "name": "swynex-git-workflow-project",
+  "version": "1.0.0",
+  "description": "A sample Node.js application demonstrating Git workflow and project baseline",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
