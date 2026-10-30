@@ -6,7 +6,15 @@ function getAppInfo() {
     };
 }
 
-const appInfo = getAppInfo();
+function healthCheck() {
+    return {
+        status: "Healthy",
+        message: "Application is working correctly"
+    };
+}
 
 console.log("Application Information:");
-console.log(appInfo);
+console.log(getAppInfo());
+
+console.log("\nHealth Check:");
+console.log(healthCheck());
