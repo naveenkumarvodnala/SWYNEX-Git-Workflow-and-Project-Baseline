@@ -83,3 +83,45 @@ git pull origin main
 ## Repository
 
 [GitHub Repository](https://github.com/naveenkumarvodnala/SWYNEX-Git-Workflow-and-Project-Baseline)
+
+## Continuous Integration (CI) Pipeline
+
+This project uses GitHub Actions to automatically validate code changes.
+
+### CI Workflow
+
+The pipeline runs on:
+
+- Push events to main and feature branches.
+- Pull Requests targeting main.
+
+### Pipeline Stages
+
+1. Checkout source code.
+2. Set up Node.js 20.
+3. Install dependencies using npm ci.
+4. Run ESLint for code-quality validation.
+5. Execute automated tests using Node.js Test Runner.
+6. Validate the application build.
+
+### GitHub Actions Workflow
+
+Workflow file:
+`.github/workflows/ci.yml`
+
+### CI Results
+
+- ESLint: Passed
+- Automated tests: 2 passed
+- Build validation: Passed
+- Pull Request checks: Passed
+- Push checks: Passed
+
+### Technologies
+
+- GitHub Actions
+- Node.js
+- JavaScript
+- ESLint
+- Node.js Test Runner
+- Git and GitHub
