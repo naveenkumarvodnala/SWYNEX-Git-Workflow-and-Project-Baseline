@@ -125,3 +125,77 @@ Workflow file:
 - ESLint
 - Node.js Test Runner
 - Git and GitHub
+
+## Docker Containerization
+
+This project supports repeatable application execution using Docker.
+
+### Prerequisites
+
+- Docker Desktop installed and running.
+- Git installed.
+
+### Build Docker Image
+
+Clone the repository:
+
+```bash
+git clone https://github.com/naveenkumarvodnala/SWYNEX-Git-Workflow-and-Project-Baseline.git
+cd SWYNEX-Git-Workflow-and-Project-Baseline
+```
+
+Build the Docker image:
+
+```bash
+docker build -t swynex-node-app:1.0 .
+```
+
+### Run Docker Container
+
+```bash
+docker run --name swynex-container swynex-node-app:1.0
+```
+
+### Verify Execution
+
+View container status:
+
+```bash
+docker ps -a
+```
+
+View application logs:
+
+```bash
+docker logs swynex-container
+```
+
+Expected application output:
+
+- Application status: Running
+- Health check status: Healthy
+
+The container exits with status code 0 after successful execution because this is a command-line application.
+
+### Docker Cleanup
+
+Remove the container:
+
+```bash
+docker rm swynex-container
+```
+
+Remove the image:
+
+```bash
+docker rmi swynex-node-app:1.0
+```
+
+### Docker Files
+
+- `Dockerfile` – Defines the Node.js application image.
+- `.dockerignore` – Excludes unnecessary files from the Docker build context.
+
+### Key Learning
+
+Learned how to containerize a Node.js application, build Docker images, execute containers, and verify application execution through container logs.
