@@ -1,3 +1,4 @@
+
 function getAppInfo() {
     return {
         name: "SWYNEX Git Workflow Project",
@@ -13,8 +14,12 @@ function healthCheck() {
     };
 }
 
-console.log("Application Information:");
-console.log(getAppInfo());
+if (require.main === module) {
+    console.log("Application Information:");
+    console.log(getAppInfo());
 
-console.log("\nHealth Check:");
-console.log(healthCheck());
+    console.log("\nHealth Check:");
+    console.log(healthCheck());
+}
+
+module.exports = { getAppInfo, healthCheck };
