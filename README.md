@@ -199,3 +199,109 @@ docker rmi swynex-node-app:1.0
 ### Key Learning
 
 Learned how to containerize a Node.js application, build Docker images, execute containers, and verify application execution through container logs.
+
+---
+
+# Task 4: Final Delivery Pipeline
+
+## Overview
+
+This task connects the Continuous Integration (CI) process with Docker image creation to establish a repeatable CI/CD-style delivery pipeline.
+
+## Pipeline Architecture
+
+```text
+Developer Push / Pull Request
+            |
+            v
+       GitHub Actions
+            |
+            v
+    Install Dependencies
+            |
+            v
+       ESLint Checks
+            |
+            v
+      Automated Tests
+            |
+            v
+     Build Validation
+            |
+            v
+     Docker Image Build
+            |
+            v
+      Image Verification
+            |
+            v
+       Release Notes
+```
+
+## Workflow Implementation
+
+The workflow is configured in:
+
+`.github/workflows/delivery.yml`
+
+### Pipeline Stages
+
+| Stage        | Description                          |
+| ------------ | ------------------------------------ |
+| Checkout     | Retrieves the repository source code |
+| Setup        | Configures Node.js 20                |
+| Install      | Installs project dependencies        |
+| Lint         | Checks code quality                  |
+| Test         | Runs automated tests                 |
+| Build        | Validates the application            |
+| Docker Build | Creates the Docker image             |
+| Verification | Confirms the image was created       |
+
+## Docker Image Versioning
+
+The workflow creates two tags:
+
+- `swynex-node-app:latest`
+- `swynex-node-app:<commit-sha>`
+
+The commit SHA tag helps identify the source code version used to build an image.
+
+## Running the Delivered Application
+
+Build:
+
+```bash
+docker build -t swynex-node-app:1.0 .
+```
+
+Run:
+
+```bash
+docker run --name swynex-container swynex-node-app:1.0
+```
+
+View logs:
+
+```bash
+docker logs swynex-container
+```
+
+## Release Documentation
+
+See [RELEASE_NOTES.md](RELEASE_NOTES.md) for release information, validation stages and delivery instructions.
+
+## Pipeline Execution Evidence
+
+Screenshots of successful GitHub Actions executions will be added here after the workflow is run successfully.
+
+## Deployment Scope
+
+This task implements automated CI validation and Docker image creation. The image is verified in the GitHub Actions runner. Publishing to a container registry and deploying to a production server are outside this task's implementation scope.
+
+## Key Learnings
+
+- Integrating CI validation and container image creation.
+- Configuring dependent jobs using GitHub Actions.
+- Understanding Docker image versioning.
+- Documenting release and delivery procedures.
+- Building a repeatable application delivery workflow.
